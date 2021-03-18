@@ -56,45 +56,6 @@
 
 // }
 
-// const numberOfFilms = +prompt("Сколько фильмов вы посмотрели?", '');
-
-
-// const personalMovieDB = {
-//     count: numberOfFilms,
-//     movies: {},
-//     actors: {},
-//     genres: [],
-//     privat: false
-// };
-
-// for (let i = 0; i < 2; i++) {
-//     const a = prompt("Один из последних просмотренных фильмов?", ''),
-//         b = prompt("На сколько оцените его от 0 - 10", '');
-
-//     if (a != null && b != null && a != '' && b != '' && a.length < 50) {
-//         personalMovieDB.movies[a] = b;
-//         console.log('done');
-//     } else {
-//         console.log('error');
-//         i--;
-//     }
-
-
-// }
-// if (personalMovieDB.count < 10) {
-//     console.log('посмотрено довольно мало фильмов');
-// } else if (personalMovieDB.count >= 10 && personalMovieDB.count <= 30) {
-//     console.log('вы класический зритель ');
-// } else if (personalMovieDB.count >= 30) {
-//     console.log('вы еиноман');
-// } else {
-//     console.log('произогла ошибка');
-// }
-
-
-// console.log(personalMovieDB);
-
-
 // let num = 20;
 
 // function showFirstMessage(text) {
@@ -201,16 +162,133 @@
 
 // sayHi();
 
-function makeWorker() {
-    let namev = "Pete";
+// function makeWorker() {
+//     let namev = "Pete";
 
-    return function() {
-        console.log(namev);
-    };
+//     return function() {
+//         console.log(namev);
+//     };
+// }
+// let namev = "John";
+
+// let work = makeWorker();
+
+// work();
+
+// const str = "hello";
+
+// console.log(str[2]);
+
+// console.log(str.toUpperCase());
+// console.log(str.toLowerCase());
+// console.log(str);
+
+// const fruit = "Some fruit";
+
+// console.log(fruit.indexOf("fruit"));
+
+// const logg = 'Hello world';
+
+// console.log(logg.slice(6));
+
+// console.log(logg.substring(6, 11));
+
+// console.log(logg.substr(6, 5));
+
+// const num = 12.2;
+// console.log(Math.round(num));
+
+// const test = "12.2px";
+// console.log(parseInt(test));
+// console.log(parseFloat(test));
+
+
+// function sum(a, b) {
+//     return a + b;
+// }
+
+// console.log(`a + b = ${sum(100, 209)}`);
+
+// let guestList = `Guests:
+//  \n* John
+// \n* Pete
+//  \n* Mary
+// `;
+
+// alert(guestList);
+
+// for (let char of "Hello") {
+//     console.log(char);
+// }
+
+// console.log('Interface' [0].toLowerCase());
+
+let numberOfFilms;
+
+function start() {
+    numberOfFilms = +prompt("Сколько фильмов вы посмотрели?", '');
+
+    while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+        numberOfFilms = +prompt("Сколько фильмов вы посмотрели?", '');
+
+    }
 }
-let namev = "John";
 
-let work = makeWorker();
+start();
 
-work();
-console.log(work);
+const personalMovieDB = {
+    count: numberOfFilms,
+    movies: {},
+    actors: {},
+    genres: [],
+    privat: true
+};
+
+
+function rememberMyFilms() {
+    for (let i = 0; i < 2; i++) {
+        const a = prompt("Один из последних просмотренных фильмов?", ''),
+            b = prompt("На сколько оцените его от 0 - 10", '');
+
+        if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+            personalMovieDB.movies[a] = b;
+            console.log('done');
+        } else {
+            console.log('error');
+            i--;
+        }
+
+    }
+}
+// rememberMyFilms();
+
+
+function detectPersonalLevel() {
+    if (personalMovieDB.count < 10) {
+        console.log('посмотрено довольно мало фильмов');
+    } else if (personalMovieDB.count >= 10 && personalMovieDB.count <= 30) {
+        console.log('вы классический зритель ');
+    } else if (personalMovieDB.count >= 30) {
+        console.log('вы киноман');
+    } else {
+        console.log('произошла ошибка');
+    }
+}
+
+// detectPersonalLevel();
+
+function showMyDB(hidden) {
+    if (!hidden) {
+        console.log(personalMovieDB);
+    }
+}
+
+showMyDB(personalMovieDB.privat);
+
+function writeYourGenres() {
+    for (let i = 1; i <= 3; i++) {
+        personalMovieDB.genres[i - 1] = prompt(`Ваш любимый жанр под номером ${i}`);
+    }
+}
+writeYourGenres();
+console.log(personalMovieDB);
